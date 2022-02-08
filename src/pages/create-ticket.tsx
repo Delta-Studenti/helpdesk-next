@@ -1,14 +1,16 @@
 import type { NextPage } from "next";
-import { LoginInput } from "../../types/login";
+import { CreateTicketInput } from "../types/createTicket";
 
 const Register: NextPage = () => {
 
 	const submit = async () => {
-		const data: LoginInput = {
-			email: "misamadera1@gmail.com",
-			password: "password",
+		const data: CreateTicketInput = {
+			description: "Je to rozbite",
+			title: "Rozbita kluczka",
+			groupId: 1,
+			priorityId: 1,
 		};
-		const res = await fetch('/api/login', {
+		const res = await fetch('/api/create-ticket', {
 			body: JSON.stringify(data),
 			headers: {
 				'Content-Type': 'application/json',
@@ -26,8 +28,8 @@ const Register: NextPage = () => {
 
 	return (
 		<>
-			<h1>Login</h1>
-			<button onClick={submit}>login</button>
+			<h1>Create ticket</h1>
+			<button onClick={submit}>create ticket</button>
 		</>
 	);
 };

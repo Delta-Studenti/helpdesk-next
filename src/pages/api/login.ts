@@ -33,5 +33,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 	const token = generateToken(user.id, `${user.firstName} ${user.lastName}`);
 
-	res.status(200).json({ token });
+	res.setHeader("Set-Cookie", [`token=${token}; Path=/; HttpOnly`]);
+
+
+	res.status(200).json({ message: "OK" });
 };

@@ -18,12 +18,8 @@ const Register: NextPage = () => {
 			method: 'POST',
 		});
 
-		const { token, message } = await res.json();
+		const { message } = await res.json();
 
-		if (token || typeof token === "string") {
-			console.log(token);
-			return;
-		}
 		if (message || typeof message === "string") {
 			console.error(message);
 			return;
