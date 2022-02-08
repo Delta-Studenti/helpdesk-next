@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              Int @id @default(autoincrement())
+  firstName       String
+  lastName        String
+  email           String
+  password        String
+  verified        Boolean @default(false)
+  admin           Boolean @default(false)
+  createdAt       DateTime @default(now())
+  resolver        Boolean @default(false)
+  tickets         Ticket[]
+  messages        Message[]
+  groupId         Int
+  group           Group @relation(fields: [groupId], references: [id])
+}
+
+model Group {
+  id          Int @id @default(autoincrement())
+  name        String
+  description String
+  users       User[]
+  tickets     Ticket[]
+}
+
+model Ticket {
+  id          Int @id @default(autoincrement())
+  title       String
+  description String
+  status      String
+  priority    String
+  createdAt   DateTime @default(now())
+  userId      Int
+  user        User @relation(fields: [userId], references: [id])
+  groupId     Int
+  group       Group @relation(fields: [groupId], references: [id])
+  messages    Message[]
+  statuses    Status[]
+}
+
+model Message {
+  id          Int @id @default(autoincrement())
+  text        String
+  createdAt   DateTime @default(now())
+  userId      Int
+  user        User @relation(fields: [userId], references: [id])
+  ticketId    Int
+  ticket      Ticket @relation(fields: [ticketId], references: [id])
+}
+
+model Status {
+  id          Int @id @default(autoincrement())
+  title       String
+  createdAt   DateTime @default(now())
+  ticketId    Int
+  ticket      Ticket @relation(fields: [ticketId], references: [id])
+}
