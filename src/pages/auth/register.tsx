@@ -1,15 +1,16 @@
 import type { NextPage } from "next";
-import { LoginInput } from "../types/login";
-import { RegisterInput } from "../types/register";
+import { RegisterInput } from "../../types/register";
 
 const Register: NextPage = () => {
 
 	const submit = async () => {
-		const data: LoginInput = {
+		const data: RegisterInput = {
 			email: "misamadera1@gmail.com",
+			firstName: "Michal",
+			lastName: "Sadłowski",
 			password: "password",
 		};
-		const res = await fetch('/api/login', {
+		const res = await fetch('/api/register', {
 			body: JSON.stringify(data),
 			headers: {
 				'Content-Type': 'application/json',
@@ -31,8 +32,8 @@ const Register: NextPage = () => {
 
 	return (
 		<>
-			<h1>Login</h1>
-			<button onClick={submit}>login</button>
+			<h1>Register</h1>
+			<button onClick={submit}>register</button>
 		</>
 	);
 };

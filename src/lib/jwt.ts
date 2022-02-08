@@ -4,9 +4,10 @@ import { Token } from "../types/token";
 const secret = process.env.APP_SECRET;
 if (!secret) throw new Error("APP_SECRET is not defined");
 
-export const generateToken = (userId: number): string => {
+export const generateToken = (userId: number, name: string): string => {
 	const payload: Token = {
 		userId,
+		name,
 	};
 	return jwt.sign(payload, secret);
 };
