@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 	const user = await prisma.user.findFirst({
 		where: {
-			email,
+			email: email.toLocaleLowerCase(),
 		},
 	});
 

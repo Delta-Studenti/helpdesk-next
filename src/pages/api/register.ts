@@ -21,7 +21,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 	const existingUser = await prisma.user.findFirst({
 		where: {
-			email,
+			email: email.toLocaleLowerCase(),
 		},
 	});
 
@@ -36,7 +36,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 	const user = await prisma.user.create({
 		data: {
-			email,
+			email: email.toLocaleLowerCase(),
 			firstName,
 			lastName,
 			password: hash,
