@@ -40,12 +40,13 @@ model Ticket {
   title       String
   description String
   status      String
-  priority    String
   createdAt   DateTime @default(now())
   userId      Int
   user        User @relation(fields: [userId], references: [id])
   groupId     Int
   group       Group @relation(fields: [groupId], references: [id])
+  priorityId  Int
+  priority    Priority @relation(fields: [priorityId], references: [id])
   messages    Message[]
   statuses    Status[]
 }
@@ -66,4 +67,10 @@ model Status {
   createdAt   DateTime @default(now())
   ticketId    Int
   ticket      Ticket @relation(fields: [ticketId], references: [id])
+}
+
+model Priority {
+  id          Int @id @default(autoincrement())
+  title       String
+  tickets     Ticket[]
 }
