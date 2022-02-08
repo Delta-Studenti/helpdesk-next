@@ -22,8 +22,8 @@ model User {
   resolver        Boolean @default(false)
   tickets         Ticket[]
   messages        Message[]
-  groupId         Int
-  group           Group @relation(fields: [groupId], references: [id])
+  groupId         Int?
+  group           Group? @relation(fields: [groupId], references: [id])
 }
 
 model Group {
