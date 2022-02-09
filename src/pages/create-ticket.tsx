@@ -1,28 +1,27 @@
 import type { NextPage } from "next";
+import { useCreateTicketMutation } from "../graphql/frontend/create.graphql";
 import { CreateTicketInput } from "../types/createTicket";
 
 const Register: NextPage = () => {
+	const [mutation] = useCreateTicketMutation();
 
 	const submit = async () => {
-		const data: CreateTicketInput = {
-			description: "Je to rozbite",
-			title: "Rozbita kluczka",
-			groupId: 1,
-			priorityId: 1,
-		};
-		const res = await fetch('/api/create-ticket', {
-			body: JSON.stringify(data),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			method: 'POST',
-		});
-
-		const { message } = await res.json();
-
-		if (message || typeof message === "string") {
-			console.error(message);
-			return;
+		try {
+			await mutation({
+				variables: {
+					input: {
+						description: "Je to rozbite",
+						title: "Rozbita kluczka",
+						groupId: 1,
+						priorityId: 1,
+					},
+				},
+			});
+			alert("Success");
+		} catch ({message}) {
+			if (typeof message === "string") {
+				alert(message);
+			}
 		}
 	}
 

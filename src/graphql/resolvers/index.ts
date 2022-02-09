@@ -1,6 +1,9 @@
 import { Resolvers } from "../../../.cache/__types__";
 import { CustomContext } from "../../types/context";
 import { login, register } from "./auth";
+import { createMessage } from "./createMessage";
+import { createStatus } from "./createStatus";
+import { createTicket } from "./createTicket";
 
 export const resolvers: Resolvers<CustomContext> = {
 	Query: {
@@ -13,5 +16,8 @@ export const resolvers: Resolvers<CustomContext> = {
 	Mutation: {
 		login: async (_parent, { input }, context) => login(input, context),
 		register: async (_parent, { input }, context) => register(input, context),
+		createMessage: async (_parent, { input }, context) => createMessage(input, context),
+		createStatus: async (_parent, { input }, context) => createStatus(input, context),
+		createTicket: async (_parent, { input }, context) => createTicket(input, context),
 	},
 };

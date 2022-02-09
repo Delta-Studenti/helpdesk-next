@@ -4,12 +4,14 @@ import type { NextApiRequest, NextApiResponse, PageConfig } from "next";
 import { resolvers } from "../../graphql/resolvers";
 import typeDefs from "../../graphql/schema";
 import { CustomContext } from "../../types/context";
+import { validateToken } from "../../lib/jwt";
 
-const context = ({ res }: { res: NextApiResponse, req: NextApiRequest }): CustomContext => {
+const context = ({ res, req }: { res: NextApiResponse, req: NextApiRequest }): CustomContext => {
 	return {
 		setCookie: (key: string, value: string) => {
 			res.setHeader("Set-Cookie", [`${key}=${value}; Path=/; HttpOnly`]);
 		},
+		userId: () => validateToken(req.cookies.token ?? ""),
 	}
 }
 

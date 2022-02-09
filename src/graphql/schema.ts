@@ -9,6 +9,9 @@ export default gql`
 	type Mutation {
 		register(input: RegisterInput!): Boolean!
 		login(input: LoginInput!): Boolean!
+		createTicket(input: CreateTicketInput!): Int!
+		createMessage(input: CreateMessageInput!): Boolean!
+		createStatus(input: CreateStatusInput!): Boolean!
 	}
 
 	input RegisterInput {
@@ -21,5 +24,22 @@ export default gql`
 	input LoginInput {
 		email: String!
 		password: String!
+	}
+
+	input CreateTicketInput {
+		title: String!
+		description: String!
+		groupId: Int!
+		priorityId: Int!
+	}
+
+	input CreateMessageInput {
+		ticketId: Int!
+		text: String!
+	}
+
+	input CreateStatusInput {
+		text: String!
+		ticketId: Int!
 	}
 `;

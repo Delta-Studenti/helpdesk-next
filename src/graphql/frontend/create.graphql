@@ -1,0 +1,11 @@
+mutation CreateMessage($input: CreateMessageInput!) {
+	createMessage(input: $input)
+}
+
+mutation CreateStatus($input: CreateStatusInput!) {
+	createStatus(input: $input)
+}
+
+mutation CreateTicket($input: CreateTicketInput!) {
+	createTicket(input: $input)
+}
