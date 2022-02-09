@@ -3,9 +3,9 @@ import prisma from "../../lib/prisma";
 
 const perPage = 20;
 
-export const tickets = async (page: number | null): Promise<Ticket[]> => {
-	if (page === 0) throw new Error("Invalid page number");
-	const tickets = prisma.ticket.findMany({
+export const tickets = async (page: number): Promise<Ticket[]> => {
+	if (page < 1) throw new Error("Invalid page number");
+	const tickets = await prisma.ticket.findMany({
 		include: {
 			user: true,
 			messages: {

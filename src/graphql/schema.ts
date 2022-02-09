@@ -1,6 +1,8 @@
 import { gql } from "apollo-server-micro";
 
 export default gql`
+	scalar Date
+
 	type Query {
 		hello: String
 		test: Boolean
@@ -14,6 +16,7 @@ export default gql`
 		description: String!
 		status: String!
 		user: User!
+		createdAt: Date!
 		messages: [Message!]!
 		statuses: [Status!]!
 		priority: Priority!

@@ -14,7 +14,7 @@ export const resolvers: Resolvers<CustomContext> = {
 			context.setCookie("token", "test");
 			return false;
 		},
-		tickets: async (_parent, { page }) => tickets(page ?? null),
+		tickets: async (_parent, { page }) => tickets(page ?? 1),
 		ticket: async (_parent, { id }) => ticket(id),
 	},
 	Mutation: {
