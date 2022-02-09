@@ -3,6 +3,7 @@ query Tickets($page: Int) {
 		id
 		title
 		status
+		createdAt
 		messages {
 			id
 		}

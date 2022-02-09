@@ -1,5 +1,6 @@
 import { Resolvers } from "../../../.cache/__types__";
 import { CustomContext } from "../../types/context";
+import { dateScalar } from "../scalars/date";
 import { login, register } from "./auth";
 import { createMessage } from "./createMessage";
 import { createStatus } from "./createStatus";
@@ -24,4 +25,5 @@ export const resolvers: Resolvers<CustomContext> = {
 		createStatus: async (_parent, { input }, context) => createStatus(input, context),
 		createTicket: async (_parent, { input }, context) => createTicket(input, context),
 	},
+	Date: dateScalar,
 };

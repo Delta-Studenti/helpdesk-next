@@ -25,11 +25,13 @@ export default gql`
 	type Message {
 		id: Int!
 		text: String!
+		createdAt: Date!
 		user: User!
 	}
 
 	type Status {
 		id: Int!
+		createdAt: Date!
 		title: String!
 	}
 
