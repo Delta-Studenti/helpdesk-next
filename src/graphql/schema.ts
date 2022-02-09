@@ -4,6 +4,43 @@ export default gql`
 	type Query {
 		hello: String
 		test: Boolean
+		tickets(page: Int): [Ticket!]!
+		ticket(id: Int!): Ticket
+	}
+
+	type Ticket {
+		id: Int!
+		title: String!
+		description: String!
+		status: String!
+		user: User!
+		messages: [Message!]!
+		statuses: [Status!]!
+		priority: Priority!
+	}
+
+	type Message {
+		id: Int!
+		text: String!
+		user: User!
+	}
+
+	type Status {
+		id: Int!
+		title: String!
+	}
+
+	type Priority {
+		id: Int!
+		title: String!
+	}
+
+	type User {
+		id: Int!
+		firstName: String!
+		lastName: String!
+		email: String!
+		admin: Boolean!
 	}
 
 	type Mutation {

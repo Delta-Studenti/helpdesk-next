@@ -4,6 +4,8 @@ import { login, register } from "./auth";
 import { createMessage } from "./createMessage";
 import { createStatus } from "./createStatus";
 import { createTicket } from "./createTicket";
+import { ticket } from "./ticket";
+import { tickets } from "./tickets";
 
 export const resolvers: Resolvers<CustomContext> = {
 	Query: {
@@ -12,6 +14,8 @@ export const resolvers: Resolvers<CustomContext> = {
 			context.setCookie("token", "test");
 			return false;
 		},
+		tickets: async (_parent, { page }) => tickets(page ?? null),
+		ticket: async (_parent, { id }) => ticket(id),
 	},
 	Mutation: {
 		login: async (_parent, { input }, context) => login(input, context),
