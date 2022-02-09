@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-}
+	reactStrictMode: true,
+	webpack(config, options) {
+		config.module.rules.push({
+			test: /\.graphql$/,
+			exclude: /node_modules/,
+			use: [options.defaultLoaders.babel, { loader: "graphql-let/loader" }],
+		});
 
-module.exports = nextConfig
+		return config;
+	},
+};
+
+module.exports = nextConfig;

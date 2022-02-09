@@ -1,18 +1,12 @@
 import { ApolloServer, gql } from "apollo-server-micro";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import type { NextApiRequest, NextApiResponse, PageConfig } from "next";
+import { resolvers } from "../../graphql/resolvers";
+import typeDefs from "../../graphql/schema";
 
 const server = new ApolloServer({
-	  typeDefs: gql`
-		type Query {
-			hello: String
-		}
-	  `,
-	  resolvers: {
-		  Query: {
-			  hello: () => "Hello world!",
-		  },
-	  },
+	  typeDefs,
+	  resolvers,
 	  plugins: [
 		ApolloServerPluginLandingPageGraphQLPlayground(),
 	  ],
