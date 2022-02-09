@@ -1,3 +1,4 @@
 query Hello {
 	hello
+	test
 }

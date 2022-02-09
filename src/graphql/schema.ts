@@ -5,4 +5,8 @@ export default gql`
 		hello: String
 		test: Boolean
 	}
+
+	type Mutation {
+		test: Boolean
+	}
 `;
