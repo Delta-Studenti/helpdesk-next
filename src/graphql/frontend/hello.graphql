@@ -1,4 +1,0 @@
-query Hello {
-	hello
-	test
-}

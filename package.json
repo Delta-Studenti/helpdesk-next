@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.8",
+    "@graphql-tools/schema": "^8.3.1",
     "@prisma/client": "3.9.1",
     "apollo-server-micro": "^3.6.3",
     "bcrypt": "^5.0.1",

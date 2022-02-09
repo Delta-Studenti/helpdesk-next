@@ -1,0 +1,23 @@
+query Ticket($id: Int!) {
+	ticket(id: $id) {
+		id
+		title
+		status
+		description
+		messages {
+			id
+			text
+			user {
+				firstName
+				lastName
+			}
+		}
+		statuses {
+			title
+		}
+		user {
+			firstName
+			lastName
+		}
+	}
+}

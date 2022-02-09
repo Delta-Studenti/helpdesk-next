@@ -1,0 +1,14 @@
+query Tickets($page: Int) {
+	tickets(page: $page) {
+		id
+		title
+		status
+		messages {
+			id
+		}
+		user {
+			firstName
+			lastName
+		}
+	}
+}
