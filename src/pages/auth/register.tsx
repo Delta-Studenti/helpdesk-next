@@ -1,28 +1,26 @@
 import type { NextPage } from "next";
-import { RegisterInput } from "../../types/register";
+import { useRegisterMutation } from "../../graphql/frontend/auth.graphql";
 
 const Register: NextPage = () => {
+	const [mutation] = useRegisterMutation();
 
 	const submit = async () => {
-		const data: RegisterInput = {
-			email: "misamadera1@gmail.com",
-			firstName: "Michal",
-			lastName: "Sadłowski",
-			password: "password",
-		};
-		const res = await fetch('/api/register', {
-			body: JSON.stringify(data),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			method: 'POST',
-		});
-
-		const { message } = await res.json();
-
-		if (message || typeof message === "string") {
-			console.error(message);
-			return;
+		try {
+			await mutation({
+				variables: {
+					input: {
+						email: "misamadera2@gmail.com",
+						password: "Ahoj1234",
+						firstName: "Já",
+						lastName: "Ty",
+					},
+				},
+			});
+			alert("Success");
+		} catch ({message}) {
+			if (typeof message === "string") {
+				alert(message);
+			}
 		}
 	}
 
