@@ -4,23 +4,22 @@ import { ticket } from "../../types/ticket";
 
 const TicketCard: React.FC = (props: ticket) => {
     const createdAt = new Date(props.ticket.createdAt).toLocaleDateString();
-    console.log(createdAt);
     return (
-        <div className="d-flex flex-row align-items-center justify-content-between p-4 shadow-lg rounded bg-body rounded-3 m-4">
+        <div className="d-flex flex-row align-items-center justify-content-between shadow-lg rounded bg-body rounded-3 m-4 ">
             <div className="col">
                 <input
-                    className="form-check-input mt-0"
+                    className="form-check-input"
                     type="checkbox"
                     value=""
                     aria-label="Checkbox for following text input"
                 />
             </div>
-            <div className="col d-flex flex-row gap-1">
-                <p>{props.ticket.user.firstName}</p>
+            <div className="col d-flex justify-content-between">
+                <p className="text-start">{props.ticket.user.firstName}</p>
                 <p>{props.ticket.user.lastName}</p>
             </div>
             <div className="col">
-                <p>#{props.ticket.id}</p>
+                <p className="text-center">#{props.ticket.id}</p>
             </div>
             <div className="col">
                 <p>{props.ticket.title}</p>

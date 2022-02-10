@@ -13,11 +13,11 @@ const Home: NextPage = () => {
     if (loading) return <p>Loading...</p>;
     if (error || !data) return <p>Error :(</p>;
     return (
-        <>
+        <div className="d-flex flex-sm-column">
             {data.tickets.map((ticket) => (
                 <TicketCard key={ticket.id} ticket={ticket} />
             ))}
-        </>
+        </div>
     );
 };
 
