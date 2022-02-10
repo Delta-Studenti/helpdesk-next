@@ -1,1 +1,1 @@
-export { default as TucketCard} from './TucketCard';
+export { default as TicketCard} from './TicketCard';
