@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import React from "react";
 import { TicketQuery } from "../../graphql/frontend/ticket.graphql";
@@ -63,6 +64,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
             </div> */}
         </div>
     );
+
 };
 
 export default TicketCard;
