@@ -8,6 +8,7 @@ import Link from "next/link";
 import React from "react";
 import TicketCard from "../Components/TicketCard/TicketCard";
 import MainLayout from "../Components/Layouts/main";
+import { PageHeader } from "../Components/PageHeader";
 
 const Home: NextPage = () => {
   const { data, loading, error } = useTicketsQuery();
@@ -29,7 +30,7 @@ const Home: NextPage = () => {
           <p>{ticket.status}</p>
         </div>
       ))}
-      </div>
+
       </MainLayout>
   );
 };
