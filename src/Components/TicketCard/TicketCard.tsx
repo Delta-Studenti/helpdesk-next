@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import { ticket } from "../../types/ticket";
 import { TicketQuery } from "../../graphql/frontend/ticket.graphql";
 type TicketCardProps = {
     ticket: TicketQuery["ticket"];
