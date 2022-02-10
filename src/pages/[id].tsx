@@ -1,6 +1,7 @@
 import type { GetServerSideProps, NextPage } from "next";
 import { TicketDocument, useTicketQuery } from "../graphql/frontend/ticket.graphql";
 import { client } from "../lib/apollo-server";
+import { IssueHeader } from "../Components/IssueDetailed/IssueHeader";
 
 type TicketProps = {
 	id: number;
@@ -19,18 +20,24 @@ const Ticket: NextPage<TicketProps> = ({ id }) => {
 
 	return (
 		<>
-			<h1>{data.ticket.id}</h1>
-			<h2>{data.ticket.title}</h2>
-			<p>{data.ticket.description}</p>
-			<div>
-				<h3>Messages ({data.ticket.messages.length})</h3>
-				{data.ticket.messages.map((message) => (
-					<div key={message.id}>
-						<h4>{message.text}</h4>
-						<p>{`${message.user.firstName} ${message.user.lastName}`}</p>
+			<div className="container py-3">
+				<IssueHeader />
+                
+				<div className="p-5 mb-4 bg-light rounded-3">
+					<h1>{data.ticket.id}</h1>
+					<h2>{data.ticket.title}</h2>
+					<p>{data.ticket.description}</p>
+					<div>
+						<h3>Messages ({data.ticket.messages.length})</h3>
+						{data.ticket.messages.map((message) => (
+							<div key={message.id}>
+								<h4>{message.text}</h4>
+								<p>{`${message.user.firstName} ${message.user.lastName}`}</p>
+							</div>
+						))}
 					</div>
-				))}
-			</div>
+				</div>
+			</div>	
 		</>
 	);
 };
@@ -47,9 +54,9 @@ export const getServerSideProps: GetServerSideProps<TicketProps> = async ({ req,
 	});
 
 	const extracted = client.cache.extract();
-	
+
 	const data = extracted.ROOT_QUERY?.[`ticket({"id":${id}})`];
-	
+
 	if (!data) return { notFound: true };
 
 	return {
