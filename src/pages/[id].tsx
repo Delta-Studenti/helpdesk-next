@@ -21,9 +21,9 @@ const Ticket: NextPage<TicketProps> = ({ id }) => {
 	return (
 		<>
 			<div className="container py-3">
-				<IssueHeader />
+				<IssueHeader ticket={data.ticket} />
                 
-				<div className="p-5 mb-4 bg-light rounded-3">
+				{/* <div className="p-5 mb-4 bg-light rounded-3">
 					<h1>{data.ticket.id}</h1>
 					<h2>{data.ticket.title}</h2>
 					<p>{data.ticket.description}</p>
@@ -36,7 +36,7 @@ const Ticket: NextPage<TicketProps> = ({ id }) => {
 							</div>
 						))}
 					</div>
-				</div>
+				</div> */}
 			</div>	
 		</>
 	);
