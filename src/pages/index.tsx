@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     return (
         <MainLayout title="Tikety" sidebarTab="tickets">
             {data.tickets.map((ticket) => (
-                <TicketCard key={ticket.id} ticket={ticket} />
+                <TicketCard key={ticket.id} ticket={ticket ?? []} />
             ))}
         </MainLayout>
     );
