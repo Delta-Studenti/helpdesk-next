@@ -6,8 +6,8 @@ tasks:
   - name: Setup
     init: >
       yarn install;   
-      echo APP_SECRET=$(openssl rand -base64 12)\n > .env;
-      echo DATABASE_URL=postgresql://postgres:postgres@localhost:5432/helpdesk?schema=public\n > .env;
+      echo APP_SECRET=$(openssl rand -base64 12) > .env;
+      echo DATABASE_URL=postgresql://postgres:postgres@localhost:5432/helpdesk?schema=public >> .env;
       docker-compose up -d;
       npx prisma db push;
       npx prisma generate;
@@ -18,8 +18,28 @@ tasks:
     init: gp sync-await setup
     command: yarn dev
 
+# Ports to expose on workspace startup
+ports:
+  # Nextjs
+  - port: 3000
+    onOpen: ignore
+    visibility: public
+
+  # Postgres
+  - port: 5432
+    onOpen: ignore
+    visibility: public 
 
 vscode:
   extensions:
     - dbaeumer.vscode-eslint
-
+    - mikestead.dotenv
+    - graphql.vscode-graphql
+    - esbenp.prettier-vscode
+    - eamodio.gitlens
+    - pflannery.vscode-versionlens
+    - wix.vscode-import-cost
+    - formulahendry.auto-close-tag
+    - bradlc.vscode-tailwindcss
+    - bierner.markdown-preview-github-styles
+    - pkief.material-icon-theme
