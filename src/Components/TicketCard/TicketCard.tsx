@@ -1,11 +1,16 @@
 import Link from "next/link";
 import React from "react";
 import { ticket } from "../../types/ticket";
+import { TicketQuery } from "../../graphql/frontend/ticket.graphql";
+type TicketCardProps = {
+    ticket: TicketQuery["ticket"];
+};
 
-const TicketCard: React.FC = (props: ticket) => {
-    const createdAt = new Date(props.ticket.createdAt).toLocaleDateString();
+const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
+    const createdAt = new Date(ticket.createdAt).toLocaleDateString();
     return (
-        <div className="d-flex flex-row align-items-center justify-content-between shadow-lg rounded bg-body rounded-3 m-4 ">
+        <div>
+            {/* <div className="d-flex flex-row align-items-center justify-content-between shadow-lg rounded bg-body rounded-3 m-4 ">
             <div className="col">
                 <input
                     className="form-check-input"
@@ -15,31 +20,31 @@ const TicketCard: React.FC = (props: ticket) => {
                 />
             </div>
             <div className="col d-flex justify-content-between">
-                <p className="text-start">{props.ticket.user.firstName}</p>
-                <p>{props.ticket.user.lastName}</p>
+                <p className="">{ticket.user.firstName}</p>
+                <p>{ticket.user.lastName}</p>
             </div>
             <div className="col">
-                <p className="text-center">#{props.ticket.id}</p>
+                <p>#{ticket.id}</p>
             </div>
             <div className="col">
-                <p>{props.ticket.title}</p>
+                <p>{ticket.title}</p>
             </div>
             <div className="col">
                 <span
                     className={`badge 
                     ${
-                        props.ticket.status == "Otevřený"
+                        ticket.status == "Otevřený"
                             ? "bg-warning"
                             : "bg-secondary"
                     }
                     ${
-                        props.ticket.status == "Vyřešený"
+                        ticket.status == "Vyřešený"
                             ? "bg-success"
                             : "bg-secondary"
                     }
                     `}
                 >
-                    {props.ticket.status}
+                    {ticket.status}
                 </span>
             </div>
             <div className="col">
@@ -56,7 +61,7 @@ const TicketCard: React.FC = (props: ticket) => {
                 >
                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                 </svg>
-            </div>
+            </div> */}
         </div>
     );
 };
