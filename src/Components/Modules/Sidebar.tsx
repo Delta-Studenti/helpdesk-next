@@ -4,7 +4,7 @@ import React from "react";
 const Sidebar: React.FC = () => {
   return (
     <div
-      className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
+      className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark vh-100 col-sm-3"
       style={{ width: "280px" }}
     >
       <Link href="/">

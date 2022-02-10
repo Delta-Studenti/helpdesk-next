@@ -7,12 +7,11 @@ type MainLayoutProps = {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="vh-100" >
-      <div className="row h-100">
-        <Sidebar />
-        <section className="col"> {children}</section>
-      </div>
-    </div>
+      <div className="container p-0 m-0">
+    <div className="row">
+        <Sidebar /> 
+    <div className="col overflow-auto">{children} </div>
+    </div></div>
   );
 };
 
