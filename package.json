@@ -2,8 +2,8 @@
   "name": "helpdesk",
   "private": true,
   "scripts": {
-    "dev": "graphql-let && next dev",
-    "build": "graphql-let && next build",
+    "dev": "prisma generate && graphql-let && next dev",
+    "build": "prisma generate && graphql-let && next build",
     "start": "next start",
     "lint": "next lint"
   },
