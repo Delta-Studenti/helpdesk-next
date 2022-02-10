@@ -4,3 +4,6 @@ plugins:
   - typescript-operations
   - typescript-react-apollo
 cacheDir: .cache
+config:
+  scalars:
+    Date: number
