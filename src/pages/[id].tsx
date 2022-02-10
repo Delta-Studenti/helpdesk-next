@@ -22,6 +22,10 @@ const Ticket: NextPage<TicketProps> = ({ id }) => {
 		<>
 			<div className="container py-3">
 				<IssueHeader ticket={data.ticket} />
+
+				<div id="comments" className="flex-row w-75">
+					<div className="p-5 mb-4 rounded-3 bg-light border border-secondary"></div>
+				</div>
                 
 				{/* <div className="p-5 mb-4 bg-light rounded-3">
 					<h1>{data.ticket.id}</h1>
