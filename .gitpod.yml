@@ -5,8 +5,12 @@
 tasks:
   - name: Setup
     init: >
-      yarn;  
+      yarn install;   
       echo APP_SECRET=$(openssl rand -base64 12)\n > .env;
+      echo DATABASE_URL=postgresql://postgres:postgres@localhost:5432/helpdesk?schema=public\n > .env;
+      docker-compose up -d;
+      npx prisma db push;
+      npx prisma generate;
       yarn build;
       gp sync-done setup;
     command: echo "Setup done"
