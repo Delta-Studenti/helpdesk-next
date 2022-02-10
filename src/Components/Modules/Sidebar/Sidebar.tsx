@@ -3,8 +3,14 @@ import React from "react";
 import SidebarRow from "./Row";
 
 import { AiOutlineUnorderedList, AiOutlinePlusCircle } from "react-icons/ai";
+import { SidebarItemType } from "../../../types/sidebar";
 
-const Sidebar: React.FC = () => {
+type SidebarProps = {
+  sidebarTab?: SidebarItemType
+
+}
+
+const Sidebar: React.FC<SidebarProps> = ({sidebarTab}) => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark vh-100 col-sm-3"
@@ -17,11 +23,13 @@ const Sidebar: React.FC = () => {
       </Link>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto gap-1">
-        <SidebarRow link="/" active>
+        {/* ALL TICKETS */}
+        <SidebarRow link="/" active={sidebarTab === "tickets"}>
           <AiOutlineUnorderedList />
           Tikety
         </SidebarRow>
-        <SidebarRow link="/create-ticket">
+        {/* CREATE TICKET */}
+        <SidebarRow link="/create-ticket" active={sidebarTab === "create-ticket"}>
           <AiOutlinePlusCircle />
           Vytvořit tiket
         </SidebarRow>

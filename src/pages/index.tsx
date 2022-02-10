@@ -14,7 +14,7 @@ const Home: NextPage = () => {
   if (loading) return <p>Loading...</p>;
   if (error || !data) return <p>Error :(</p>;
   return (
-    <MainLayout>
+    <MainLayout title="Tikety" sidebarTab="tickets">
       <div className="container">
         <TicketCard/>
 

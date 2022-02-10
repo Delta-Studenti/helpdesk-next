@@ -1,0 +1,1 @@
+export type SidebarItemType = "tickets" | "create-ticket"
