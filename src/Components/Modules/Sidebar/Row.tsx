@@ -10,14 +10,14 @@ type SidebarRowProps = {
 const SidebarRow: React.FC<SidebarRowProps> = ({ children, link, active }) => {
   return (
     <Link href={link} passHref>
-      <li className="">
+      <li>
         <a
-          className={`nav-link px-5 text-white d-flex align-items-center gap-2 ${
-            active ? "active font-weight-bold" : ""
+          className={`font-weight-bold nav-link px-5 d-flex align-items-center gap-2 ${
+            active ? "active text-light" : "text-dark"
           }`}
-          role="button" 
+          role="button"
         >
-          {children}
+          {children} 
         </a>
       </li>
     </Link>
