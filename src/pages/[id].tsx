@@ -2,8 +2,6 @@ import type { GetServerSideProps, NextPage } from "next";
 import { TicketDocument, useTicketQuery } from "../graphql/frontend/ticket.graphql";
 import { client } from "../lib/apollo-server";
 import { IssueHeader } from "../Components/IssueDetailed/IssueHeader";
-import { IssueComment } from "../Components/IssueDetailed/IssueComment";
-import { ticketMessage } from "../types/message";
 
 type TicketProps = {
 	id: number;
