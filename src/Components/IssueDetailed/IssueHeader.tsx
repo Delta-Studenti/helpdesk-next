@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React, { FC } from "react";
 import { TicketQuery } from "../../graphql/frontend/ticket.graphql";
-import { tickets } from "../../graphql/resolvers/tickets";
 
 type IssueHeaderProps = {
     ticket: TicketQuery["ticket"];

@@ -1,2 +1,18 @@
 import React, { FC } from "react";
-import { TicketQuery } from "../../graphql/frontend/ticket.graphql";
+import {ticketMessage} from "../../types/message";
+
+type user = {
+        firstName: string;
+        lastName: string;
+};
+
+const IssueComment: FC<string> = (ticketMessage) => {
+
+    return (
+        <>
+            
+        </>
+    );
+};
+
+export { IssueComment };

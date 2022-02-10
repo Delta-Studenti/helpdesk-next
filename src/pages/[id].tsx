@@ -2,6 +2,8 @@ import type { GetServerSideProps, NextPage } from "next";
 import { TicketDocument, useTicketQuery } from "../graphql/frontend/ticket.graphql";
 import { client } from "../lib/apollo-server";
 import { IssueHeader } from "../Components/IssueDetailed/IssueHeader";
+import { IssueComment } from "../Components/IssueDetailed/IssueComment";
+import { ticketMessage } from "../types/message";
 
 type TicketProps = {
 	id: number;
@@ -24,7 +26,14 @@ const Ticket: NextPage<TicketProps> = ({ id }) => {
 				<IssueHeader ticket={data.ticket} />
 
 				<div id="comments" className="flex-row w-75">
-					<div className="p-5 mb-4 rounded-3 bg-light border border-secondary"></div>
+						{data.ticket.messages.map((message) => (
+							<div className="p-4 mb-4 rounded-3 bg-light border border-secondary">
+								<div className="d-flex flex-column flex-md-row align-items-center pb-1 mb-4 border-bottom">
+									<h5>{message.user.firstName + " " + message.user.lastName}</h5>
+								</div>
+								<p>{message.text}</p>
+							</div>
+						))}
 				</div>
                 
 				{/* <div className="p-5 mb-4 bg-light rounded-3">
