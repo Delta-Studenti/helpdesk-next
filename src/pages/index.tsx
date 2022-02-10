@@ -16,10 +16,8 @@ const Home: NextPage = () => {
   if (error || !data) return <p>Error :(</p>;
   return (
     <MainLayout title="Tikety" sidebarTab="tickets">
-      <div className="container">
-        <TicketCard/>
-
-        {data.tickets.map((ticket) => (
+      <TicketCard />
+      {data.tickets.map((ticket) => (
         <div key={ticket.id}>
           <h1>
             <Link href={`/${ticket.id}`} passHref>
@@ -30,8 +28,7 @@ const Home: NextPage = () => {
           <p>{ticket.status}</p>
         </div>
       ))}
-
-      </MainLayout>
+    </MainLayout>
   );
 };
 
