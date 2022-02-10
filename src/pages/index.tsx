@@ -14,13 +14,9 @@ const Home: NextPage = () => {
     if (error || !data) return <p>Error :(</p>;
     return (
         <>
-            <table className="table">
-                <tbody>
-                    {data.tickets.map((ticket) => (
-                        <TicketCard key={ticket.id} ticket={ticket} />
-                    ))}
-                </tbody>
-            </table>
+            {data.tickets.map((ticket) => (
+                <TicketCard key={ticket.id} ticket={ticket} />
+            ))}
         </>
     );
 };

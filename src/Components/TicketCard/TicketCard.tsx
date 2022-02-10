@@ -3,6 +3,8 @@ import React from "react";
 import { ticket } from "../../types/ticket";
 
 const TicketCard: React.FC = (props: ticket) => {
+    const createdAt = new Date(props.ticket.createdAt);
+    console.log(createdAt);
     return (
         <div className="d-flex flex-row align-items-start p-4 shadow-lg rounded bg-body rounded-3 m-4">
             <div className="col">
@@ -40,6 +42,21 @@ const TicketCard: React.FC = (props: ticket) => {
                 >
                     {props.ticket.status}
                 </span>
+            </div>
+            <div className="col">
+                <p>{props.ticket.createdAt}</p>
+            </div>
+            <div className="col">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-three-dots"
+                    viewBox="0 0 16 16"
+                >
+                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                </svg>{" "}
             </div>
         </div>
     );
