@@ -25,7 +25,7 @@ const Ticket: NextPage<TicketProps> = ({ id }) => {
 
 				<div id="comments" className="flex-row w-75">
 						{data.ticket.messages.map((message) => (
-							<div className="p-4 mb-4 rounded-3 bg-light border border-secondary">
+							<div className="p-4 mb-4 rounded-3 bg-light border border-secondary" key={message.id}>
 								<div className="d-flex flex-column flex-md-row align-items-center pb-1 mb-4 border-bottom">
 									<h5>{message.user.firstName + " " + message.user.lastName}</h5>
 								</div>

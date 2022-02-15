@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { TicketQuery } from "../../graphql/frontend/ticket.graphql";
+import { TicketsQuery } from "../../graphql/frontend/tickets.graphql";
 
 type TicketCardProps = {
-    ticket?: TicketQuery["ticket"];
+    ticket: TicketsQuery["tickets"][0];
 };
 
 const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
