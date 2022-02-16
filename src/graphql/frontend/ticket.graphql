@@ -8,12 +8,14 @@ query Ticket($id: Int!) {
         messages {
             id
             text
+            createdAt
             user {
                 firstName
                 lastName
             }
         }
         statuses {
+            createdAt
             title
         }
         user {

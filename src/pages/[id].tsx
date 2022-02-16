@@ -1,7 +1,10 @@
 import type { GetServerSideProps, NextPage } from "next";
 import { TicketDocument, useTicketQuery } from "../graphql/frontend/ticket.graphql";
 import { client } from "../lib/apollo-server";
-import { IssueHeader } from "../Components/IssueDetailed/IssueHeader";
+import MainLayout from "../Components/Layouts/main";
+import CustomTimeLine from "../Components/TimeLine/CustomTimeLine";
+import { Badge, Text, Title } from "@mantine/core";
+
 
 type TicketProps = {
 	id: number;
@@ -19,37 +22,19 @@ const Ticket: NextPage<TicketProps> = ({ id }) => {
 	if (error || !data || !data.ticket) return <p>Error</p>;
 
 	return (
-		<>
-			<div className="container py-3">
-				<IssueHeader ticket={data.ticket} />
+		<MainLayout title="Tiket" >
+			<Title>{data.ticket.title}</Title>
+			<Text>{data.ticket.description}</Text>
+			<Badge
+				variant="filled"
+				style={{
+					margin: "0.5rem",
+				}}
+				color="red"
+			>{data.ticket.status}</Badge>
 
-				<div id="comments" className="flex-row w-75">
-						{data.ticket.messages.map((message) => (
-							<div className="p-4 mb-4 rounded-3 bg-light border border-secondary" key={message.id}>
-								<div className="d-flex flex-column flex-md-row align-items-center pb-1 mb-4 border-bottom">
-									<h5>{message.user.firstName + " " + message.user.lastName}</h5>
-								</div>
-								<p>{message.text}</p>
-							</div>
-						))}
-				</div>
-                
-				{/* <div className="p-5 mb-4 bg-light rounded-3">
-					<h1>{data.ticket.id}</h1>
-					<h2>{data.ticket.title}</h2>
-					<p>{data.ticket.description}</p>
-					<div>
-						<h3>Messages ({data.ticket.messages.length})</h3>
-						{data.ticket.messages.map((message) => (
-							<div key={message.id}>
-								<h4>{message.text}</h4>
-								<p>{`${message.user.firstName} ${message.user.lastName}`}</p>
-							</div>
-						))}
-					</div>
-				</div> */}
-			</div>	
-		</>
+			<CustomTimeLine messages={data.ticket.messages} statusses={data.ticket.statuses} />
+		</MainLayout>
 	);
 };
 

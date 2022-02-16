@@ -6,18 +6,30 @@ import {
 import { client } from "../lib/apollo-server";
 import Link from "next/link";
 import React from "react";
-import TicketCard from "../Components/TicketCard/TicketCard";
 import MainLayout from "../Components/Layouts/main";
+import { List } from "@mantine/core";
+import { GoIssueOpened, GoIssueClosed } from "react-icons/go";
+import { finishedStatusses } from "../lib/finished";
 
 const Home: NextPage = () => {
     const { data, loading, error } = useTicketsQuery();
     if (loading) return <p>Loading...</p>;
     if (error || !data) return <p>Error :(</p>;
     return (
-        <MainLayout title="Tikety" sidebarTab="tickets">
-            {data.tickets.map((ticket) => (
-                <TicketCard key={ticket.id} ticket={ticket} />
-            ))}
+        <MainLayout title="Tikety">
+            <List>
+                {data.tickets.map((ticket) => (
+                    <List.Item
+                        icon={
+                            finishedStatusses.includes(ticket.status) ? <GoIssueClosed color="grey" /> :
+                             <GoIssueOpened color="green" />
+                        }
+                        key={ticket.id}
+                    >
+                        <Link href={`/${ticket.id}`}>{`#${ticket.id} ${ticket.title} - ${ticket.user.firstName} ${ticket.user.lastName}`}</Link>
+                    </List.Item>
+                ))}
+            </List>
         </MainLayout>
     );
 };
