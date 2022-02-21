@@ -9,7 +9,7 @@ type LayoutButtonProps = {
 };
 
 const LayoutButton: FC<LayoutButtonProps> = ({ icon, text, href }) => (
-  <Link href={href}>
+  <Link href={href} passHref>
     <UnstyledButton>
       <Group>
         <Avatar size={40} color="blue">{icon}</Avatar>

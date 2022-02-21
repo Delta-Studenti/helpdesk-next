@@ -10,6 +10,7 @@ import MainLayout from "../Components/Layouts/main";
 import { List } from "@mantine/core";
 import { GoIssueOpened, GoIssueClosed } from "react-icons/go";
 import { finishedStatusses } from "../lib/finished";
+import { Table } from '../Components/Table';
 
 const Home: NextPage = () => {
     const { data, loading, error } = useTicketsQuery();
@@ -17,19 +18,7 @@ const Home: NextPage = () => {
     if (error || !data) return <p>Error :(</p>;
     return (
         <MainLayout title="Tikety">
-            <List>
-                {data.tickets.map((ticket) => (
-                    <List.Item
-                        icon={
-                            finishedStatusses.includes(ticket.status) ? <GoIssueClosed color="grey" /> :
-                             <GoIssueOpened color="green" />
-                        }
-                        key={ticket.id}
-                    >
-                        <Link href={`/${ticket.id}`}>{`#${ticket.id} ${ticket.title} - ${ticket.user.firstName} ${ticket.user.lastName}`}</Link>
-                    </List.Item>
-                ))}
-            </List>
+                <Table data={data.tickets}/>
         </MainLayout>
     );
 };

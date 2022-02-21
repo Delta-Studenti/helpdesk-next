@@ -27,7 +27,7 @@ const Register: NextPage = () => {
 	}
 
 	return (
-		<MainLayout title="Vytvořit tiket" sidebarTab="create-ticket">
+		<MainLayout title="Vytvořit tiket">
 
 			<h1>Create ticket</h1>
 			<button onClick={submit}>create ticket</button>

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React, { useState } from "react";
-import { AppShell, Navbar, useMantineTheme, Text, MediaQuery, Burger, Header, ScrollArea, Accordion, ThemeIcon, List } from "@mantine/core";
+import { AppShell, Navbar, useMantineTheme, Text, MediaQuery, Burger, Header, ScrollArea, Accordion, ThemeIcon, List, Pagination } from "@mantine/core";
 import LayoutButton from "./button";
 import { GoIssueOpened } from "react-icons/go";
 import { BsPlusCircleFill } from "react-icons/bs";
